@@ -4,7 +4,6 @@
 #include <math.h>
 #define MAX 60000l
 #define MLD 1000000000.0 //10**9
-
 double procedura1(int n){
  float x=0;
  int i,j,k;
@@ -17,31 +16,31 @@ double procedura1(int n){
  } 
  return x;
 }
-double procedura2(int *n){
+double procedura2(int A[], int n){
 	float x = 0.0;
 	float suma;
-	size_t size = sizeof(n)/sizeof(int);
 	int g, d, i;
 	
-	for(d = 1; d <= size; d++){
-		for(g = d; g <= size; g++){
+	for(d = 1; d <= n; d++){
+		for(g = d; g <= n; g++){
 			suma = 0.0;
 			for(i = d; i <= g; i++){
-				suma = suma + n[i];
+				suma = suma + A[i];
 			}
-			x = suma > x ? suma : x;
-	
+			//x = max(x,suma);
+			x = x > suma ? x : suma;
 		}
 	}
 	return x;
 
 }
-int procedura3(int n){
+void procedura3(int n){
 		int i, j;
 		for(i = 1; i < sqrt(n); i++){
 			j = 1; 
 			while(j < sqrt(n)){
 				j = j+j;
+			
 			}
 		}
 }
@@ -49,26 +48,42 @@ main(){
   struct timespec tp0, tp1;
   double Tn,Fn,x;
   int n;
-for(n=2;n<66000;n=2*n){
+  int A[100];
+  for(n=0;n<100;n++){
+  	A[n] = n*n;
+  }
+
+for(n=2;n<66000;n+=1000){
 
 clock_gettime(CLOCK_PROCESS_CPUTIME_ID,&tp0);
-
-// przykladowe obliczenia
-    x=procedura1(n);
-
-// zgadywana funkcja
-      //  Fn=5*n ; // np. funkcja liniowa
-//      Fn=20000*n ; // np. funkcja liniowa
-//      Fn=n*n*n; 
-//      Fn=n*log(n); 
-//      Fn=n*n*sqrt(n);
-//      Fn=n*n; 
-//      Fn=n*n/1000; 
-    
+x = procedura1(n);
+//x = procedura2(A, n);
+//procedura3(n);
 clock_gettime(CLOCK_PROCESS_CPUTIME_ID,&tp1);
 
   Tn=(tp1.tv_sec+tp1.tv_nsec/MLD)-(tp0.tv_sec+tp0.tv_nsec/MLD);
-  Fn = n*10;
+  	Fn = n*n;
+//	Fn = 5*n ; // np. funkcja liniowa
+//      Fn = 20000*n ; // np. funkcja liniowa
+//      Fn = n*n*n; 
+//      Fn = n*log(n); 
+//      Fn = n*n*sqrt(n);
+//      Fn = n*n; 
+//      Fn = n*n/1000; 
+    
   printf("n: %5d \tczas: %3.5lf \twspolczynnik: %3.5lf\n",n,Tn, Fn/Tn);
+
 }
+// testy sprawwdzające działanie procedury2
+// procedura sumuje wartosci tablicy A[n] do n-tego elementu
+/*
+for(n=0;n<100;n++){
+	printf("\n A[%d] == %d, procedura2(A, %d) == %lf ", n, A[n], n, procedura2(A,n));
+}
+*/
+
+printf("\n");
+
+
+	return 0;
 }
