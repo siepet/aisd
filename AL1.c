@@ -53,17 +53,18 @@ main(){
   	A[n] = n*n;
   }
 
-for(n=2;n<66000;n+=1000){
+for(n=2;n<200000000;n*=2){
 
 clock_gettime(CLOCK_PROCESS_CPUTIME_ID,&tp0);
-x = procedura1(n);
+//x = procedura1(n);
 //x = procedura2(A, n);
-//procedura3(n);
+procedura3(n);
 clock_gettime(CLOCK_PROCESS_CPUTIME_ID,&tp1);
 
   Tn=(tp1.tv_sec+tp1.tv_nsec/MLD)-(tp0.tv_sec+tp0.tv_nsec/MLD);
-  	Fn = n*n;
-//	Fn = 5*n ; // np. funkcja liniowa
+//  	Fn = n*n;
+//	Fn = n*n*n ; // np. funkcja liniowa
+	Fn = log(sqrt(n)) * sqrt(n);
 //      Fn = 20000*n ; // np. funkcja liniowa
 //      Fn = n*n*n; 
 //      Fn = n*log(n); 
