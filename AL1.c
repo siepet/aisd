@@ -62,6 +62,7 @@ procedura3(n);
 clock_gettime(CLOCK_PROCESS_CPUTIME_ID,&tp1);
 
   Tn=(tp1.tv_sec+tp1.tv_nsec/MLD)-(tp0.tv_sec+tp0.tv_nsec/MLD);
+	
 //  	Fn = n*n;
 //	Fn = n*n*n ; // np. funkcja liniowa
 	Fn = log(sqrt(n)) * sqrt(n);
