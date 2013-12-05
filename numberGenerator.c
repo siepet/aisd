@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
 int	n = 100000;
 	srand(time(NULL));
 	for(i = 0; i < n; i++){
-		x = rand() % 2;
+		x = rand() % 1000;
 		fprintf(input, "%d ", x);
 	}
 	fprintf(input, "\n");
