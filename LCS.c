@@ -1,6 +1,7 @@
-#include<stdio.h>
-#include<conio.h>
-#include<string.h>
+#include <stdio.h>
+//#include <conio.h>
+#include <string.h>
+
 int i, j, m, n, a, c[20][20];
 char x[15], y[15], b[20][20];
 void PRINT(int i,int j){
@@ -49,6 +50,7 @@ int main(void){
     gets(y);
     printf("Najdluzszy wspolny podciag: \n");
     lcs_length();
+    printf("\n");
 
     return 0;
 }

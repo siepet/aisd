@@ -331,6 +331,7 @@ int main(){
     for(i = 0; i < 10; i++){
         int x = rand() % 10;
         RBinsert(&korzen, x);
+   	drukuj(korzen);
     }
     drukuj(korzen);
     drukujDot(korzen);
