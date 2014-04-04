@@ -117,16 +117,23 @@ void print_(struct Node *heap[]){
             printf("%d. %c: %d\n", i, heap[i]->c, heap[i]->f);
         }
     }
-}
+} 
+int suma3;
 void print_tree(struct Node *n, char c[], int lenc)
 {
+ 
   if(!(n->left)){
     printf("%c: ", n->c);
     int i;
+	int suma2 = 0;
+
     for(i = 0; i < lenc; i++){
-        printf("%c", c[i]);
+ 	suma2++;
+	printf("%c", c[i]);
+	
     }
-    printf("\n");
+    suma3 += suma2 *= n->f;
+    printf(" suma2: %d \n", suma2);
   } else {
     c[lenc] = '0';
     print_tree(n->left, c, lenc + 1);
@@ -134,14 +141,27 @@ void print_tree(struct Node *n, char c[], int lenc)
     print_tree(n->right, c, lenc + 1);
   }
 }
+void zlicz(struct Node *h[]){
+	int i;
+	int suma = 0;
+	for(i = 0; i < 27; i++){
+		if(h[i]->f != -1){
+			suma += h[i]->f;
+		}
+	}
+	suma *= 8;
+	printf("suma1: %d\nsuma2: %d \n", suma, suma3);
+}
 int main(){
     struct Node *heap[100], *tmp;
     char arr[100];
+    suma3 = 0;
     init(heap);
     print_(heap);
     tmp = huffman(heap);
     print_(heap);
     print_tree(tmp, arr, 0);
+    zlicz(heap);
     return 0;
 
 }
