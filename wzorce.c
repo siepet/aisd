@@ -35,13 +35,13 @@ int OA(char *pattern, char *text){
     int textLength = strlen(text);
     int i, s = 0, j;
     for(i = 0; i < textLength - patternLength; i++){
-        for(j = 0; j < patternSize; j++){
+        for(j = 0; j < patternLength; j++){
             if(text[i + j] != pattern[j]){
                 break;
             }
         }
         if(j == patternLength){
-            printf("Index: %d", i);
+            printf("Index: %d \n", i);
         }
     }
     return 0;
