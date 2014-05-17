@@ -33,7 +33,7 @@ int Union(struct Node *x, struct Node *y){
     }
     return 0;
 }
-int S-C(struct Node *x, struct Node *y){
+int SC(struct Node *x, struct Node *y){
     if(FindSet(x) == FindSet(y)){
         return 1;
     } else {
