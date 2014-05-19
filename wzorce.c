@@ -147,11 +147,38 @@ int RK(char *pattern, char *text){
     
     return 0;
 }
+// funkcja budujaca tablice przejsc automatu skonczonego
+int tablicaPrzejsc(char *pattern, int tab[][128]){
+    int i, k = 0, x, patternLength = strlen(pattern);
+    for(x = 0; x < 128; x++){
+        tab[0][x] = 0;
+    }
+    tab[0][(int)pattern[0]] = 1;
 
+    for(i = 1; i <= patternLength; i++){
+        for(x = 0; x < 128; x++){
+            tab[i][x] = tab[k][x];
+        }
+        tab[i][(int)pattern[i]] = i + 1;
+        if(i < patternLength){
+            k = tab[k][(int)pattern[i]];
+        }
+    }
+    return 0;
+}
 // Automat skonczony
 int AS(char *pattern, char *text){
     int patternLength = strlen(pattern);
     int textLength = strlen(text);
+    int tab[patternLength + 1][128];
+    tablicaPrzejsc(pattern, tab);
+    int i, j = 0;
+    for(i = 0; i < textLength; i++){
+        j = tab[j][(int)text[i]];
+        if(j == patternLength){
+            printf("FAIndex: %d ", i - patternLength + 1);
+        }
+    }
 
     return 0;
 }
