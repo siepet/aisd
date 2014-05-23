@@ -221,35 +221,35 @@ int main(int argc, char *argv[]){
     clock_gettime(CLOCK_REALTIME, &t1);
     time_sec = t1.tv_sec - t0.tv_sec;
     time_nano = t1.tv_nsec - t0.tv_nsec;
-    printf("KMP: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
+    printf("\nKMP: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
         
     clock_gettime(CLOCK_REALTIME, &t0);
     KMPM(pattern, text);
     clock_gettime(CLOCK_REALTIME, &t1);
     time_sec = t1.tv_sec - t0.tv_sec;
     time_nano = t1.tv_nsec - t0.tv_nsec;
-    printf("KMPM: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
+    printf("\nKMPM: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
     
     clock_gettime(CLOCK_REALTIME, &t0);
     OA(pattern, text);
     clock_gettime(CLOCK_REALTIME, &t1);
     time_sec = t1.tv_sec - t0.tv_sec;
     time_nano = t1.tv_nsec - t0.tv_nsec;
-    printf("OA: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
+    printf("\nOA: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
     
     clock_gettime(CLOCK_REALTIME, &t0);
     RK(pattern, text);
     clock_gettime(CLOCK_REALTIME, &t1);
     time_sec = t1.tv_sec - t0.tv_sec;
     time_nano = t1.tv_nsec - t0.tv_nsec;
-    printf("RK: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
+    printf("\nRK: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
     
     clock_gettime(CLOCK_REALTIME, &t0);
     AS(pattern, text);
     clock_gettime(CLOCK_REALTIME, &t1);
     time_sec = t1.tv_sec - t0.tv_sec;
     time_nano = t1.tv_nsec - t0.tv_nsec;
-    printf("AS: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
+    printf("\nAS: Time: %lf nanoseconds, %lf seconds \n", time_nano, time_sec);
         
     return 0;
 }
